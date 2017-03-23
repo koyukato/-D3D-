@@ -4,12 +4,12 @@ require 'json'
 class HomesController < ApplicationController
 
 def index
-res = Net::HTTP.get(URI.parse('https://app.rakuten.co.jp/services/api/Recipe/CategoryList/20121121?applicationId=1012194014463186177&categoryType=medium'))
+	res = Net::HTTP.get(URI.parse('https://app.rakuten.co.jp/services/api/Recipe/CategoryList/20121121?applicationId=1012194014463186177&categoryType=medium'))
 
-@result = JSON.parse(res)
-	end
+	@result = JSON.parse(res)
+end
 
-	def sample
+def sample
 	require 'nokogiri'
 	require 'open-uri'
 
@@ -25,24 +25,22 @@ res = Net::HTTP.get(URI.parse('https://app.rakuten.co.jp/services/api/Recipe/Cat
 	doc = Nokogiri::HTML.parse(html, charset)	
 	# site title
 	
+	#タイトル
 	@title=doc.css('//meta[property="og:title"]/@content').to_s
-	
-	ingredients=[]
-	amount=[]
-#	@ingredients=Array.new
-#	@amount=Array.new
-	hash = {}
 
+	#メニュー		
+	ingredients=[]
+	hash = {}
 	doc.css('//li[itemprop="ingredients"]').each do |node|
 		hash = {
-		"name":ingredients<<node.css('a').inner_text,
-		"amount":amount<<node.css('p').inner_text
+		"name":node.css('a').inner_text,
+		"amount":node.css('p').inner_text
 		}
-	#	@ingredients<<node.css('a').inner_text
-	#	@amount<<node.css('p').inner_text
+		ingredients.push(hash)
 	end
-	ingredients.push(hash)
 	@ingredients=ingredients
+
+	
 	end
 
 	end
