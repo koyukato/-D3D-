@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :recipe
+  resources :recipe, :only => ['index']
   match ':controller(/:action(/:id))', via: [ :get, :post, :patch ]
 end
