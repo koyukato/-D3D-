@@ -22,34 +22,49 @@ class RecipeController < ApplicationController
 
   # 画面3 - 選択されたレシピの詳細を表示
   def detail
-    require 'nokogiri'
-    require 'open-uri'
+	require 'nokogiri'
+	require 'open-uri'
+	id= params[:id]
+	puts 	url = 'https://recipe.rakuten.co.jp/recipe/'+id
+	charset = nil
+	html = open(url) do |f|
+	charset = f.charset # 文字種別を取得
+	f.read # htmlを読み込んで変数htmlに渡す
+	end
 
-    url = 'https://recipe.rakuten.co.jp/recipe/1500006337/'
+	# ノコギリを使ってhtmlを解析
+	doc = Nokogiri::HTML.parse(html, charset)	
 
-    charset = nil
-    html = open(url) do |f|
-      charset = f.charset # 文字種別を取得
-      f.read # htmlを読み込んで変数htmlに渡す
-    end
+	#タイトル
+	doc.css('//span[itemprop="title"]').each do |node|
+		@title=node.css('strong').inner_text
+	end
 
-    # ノコギリを使ってhtmlを解析
-    doc = Nokogiri::HTML.parse(html, charset) 
-    # site title
+	#所要時間
+	doc.css('//div[class=outlineMemo]').each do |node|
+		@incTime=node.css('time').inner_text
+	end
 
-    #タイトル
-    @title=doc.css('//meta[property="og:title"]/@content').to_s
+	#価格
+	doc.css('//div[class=outlineMemo]').each do |node|
+		@incMoney=node.css('li[class=icnMoney]').inner_text
+	end
+	#メニュー		
+	ingredients=[]
+	hash = {}
+	doc.css('//li[itemprop="ingredients"]').each do |node|
+		hash = {
+			"Name":node.css('a').inner_text,
+			"Amount":node.css('p').inner_text
+		}
+		ingredients.push(hash)
+	end
+	@ingredients=ingredients
 
-    #メニュー   
-    ingredients=[]
-    hash = {}
-    doc.css('//li[itemprop="ingredients"]').each do |node|
-      hash = {
-        "name":node.css('a').inner_text,
-        "amount":node.css('p').inner_text
-      }
-      ingredients.push(hash)
-    end
-    @ingredients=ingredients
+	#工程数
+	@step=1;
+	doc.css('//li[class="stepBox"]').each do |node|
+		@step=@step+1
+	end
   end
 end
