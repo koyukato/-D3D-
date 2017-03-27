@@ -1,5 +1,19 @@
 <h1>search</h1>
 
+<%= form_tag("detail.json", method:"get") do %>
+  <%= text_field_tag(:id) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<!--
+<form method="post" action="detail.json">
+ <p>
+id<input type="text" name="id" /><br />
+ <input type="submit" value="送信" />
+ </p>
+</form>
+-->
+<!--
 <table border=1>
   <tr>
     <th>Id</th>
@@ -16,5 +30,5 @@
     <td><%= i['parentCategoryId'] %></td>
   </tr>
   <% end %>
-
 </table>
+-->
