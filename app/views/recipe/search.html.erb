@@ -1,34 +1,14 @@
 <h1>search</h1>
 
 <%= form_tag("detail.json", method:"get") do %>
-  <%= text_field_tag(:id) %>
-  <%= submit_tag("Search") %>
+	<%= text_field_tag(:id)%>
+	<BR>
+	<%= submit_tag("JSON作る")%>
 <% end %>
 
-<!--
-<form method="post" action="detail.json">
- <p>
-id<input type="text" name="id" /><br />
- <input type="submit" value="送信" />
- </p>
-</form>
--->
-<!--
-<table border=1>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>categoryUrl</th>
-    <th>parentCategoryId</th>
-  </tr>
+<%= form_tag("list", method:"get") do %>
+	<%= text_field_tag(:name) %>
+	<Br>
+	<%= submit_tag("飯の検索") %>
+<% end %>
 
-  <% @result['result']['medium'].each do |i| %>
-  <tr>
-    <td><%= i['categoryId'] %></td>
-    <td><%= i['categoryName'] %></td>
-    <td><%= i['categoryUrl'] %></td>
-    <td><%= i['parentCategoryId'] %></td>
-  </tr>
-  <% end %>
-</table>
--->
