@@ -1,11 +1,4 @@
 <h1>search</h1>
-
-<%= form_tag("detail.json", method:"get") do %>
-	<%= text_field_tag(:id)%>
-	<BR>
-	<%= submit_tag("JSON作る")%>
-<% end %>
-
 <%= form_tag("list", method:"get") do %>
 	<%= text_field_tag(:name) %>
 	<Br>

@@ -1,4 +1,10 @@
 class RecipeController < ApplicationController
+require 'net/http'
+require 'uri'
+require 'json'
+require 'nokogiri'
+require 'open-uri'
+
   def index
     @version = '1.0'
     @date = DateTime.now.strftime('%Y-%m-%d %H-%M')
@@ -10,12 +16,6 @@ class RecipeController < ApplicationController
 
   # 画面2 - 検索結果のレシピをリストで公開
   def list
-	require 'net/http'
-	require 'uri'
-	require 'json'
-	require 'nokogiri'
-	require 'open-uri'
-
 	puts @word=params[:name].to_s
 	url=URI.escape('https://recipe.rakuten.co.jp/search/'+@word+'/')
 	charset=nil
@@ -48,8 +48,6 @@ class RecipeController < ApplicationController
 
   # 画面3 - 選択されたレシピの詳細を表示
   def detail
-	require 'nokogiri'
-	require 'open-uri'
 	id= params[:id]
 	puts 	url = 'https://recipe.rakuten.co.jp/recipe/'+id
 	charset = nil
