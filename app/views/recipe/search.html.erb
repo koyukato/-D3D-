@@ -1,7 +1,16 @@
-<h1>search</h1>
-<%= form_tag("list", method:"get") do %>
-	<%= text_field_tag(:name) %>
-	<Br>
-	<%= submit_tag("飯の検索") %>
-<% end %>
 
+<h1>search</h1>
+
+<div id = nodoame>
+	<%= form_tag("list", method:"get") do %>
+		<%= select_tag 'cost',options_for_select([["100円以下",1],["300円前後",2],["500円前後",3]]) %>
+		<%= select_tag 'time', options_for_select([["5分以内",1],["約10分",2],["約15分",3],["約20分",4]])%>
+		<Br>
+		<%= submit_tag("抽象的な検索") %>
+	<% end %>
+	<%= form_tag("list",method:"get") do %>
+		<%= text_field_tag 'name' %>
+		<Br>
+		<%= submit_tag("詳細検索")%>
+		<% end %>
+</div>
