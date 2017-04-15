@@ -52,6 +52,9 @@ class ApplicationController < ActionController::Base
 		   puts val.inner_text
 		   ranks.push(val.inner_text)
 	   end
+	   first_page = resp.link_with(:text => "#{ranks[0]}").click
+	   second_page = resp.link_with(:text => "#{ranks[1]}").click
+	   third_page = resp.link_with(:text => "#{ranks[2]}").click
   end
 
 end
