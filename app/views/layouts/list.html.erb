@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="keywords" content="料理,レシピ">
+    <meta name="description" content="料理意思決定支援">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="author" content="のど飴">
+    <meta name="generator" content="Frontweaver 8.2">
+
+    <title>だんご三兄弟</title>
+
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag 'list/kute' %>
+    <%= javascript_include_tag "application" 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "list/kute" 'data-turbolinks-track' => true  %>
+    <%= javascript_include_tag "list/kute.min" 'data-turbolinks-track' => true  %>
+
+    <!---
+    <script src="https://cdn.jsdelivr.net/kute.js/1.5.9/kute.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/kute.js/1.5.9/kute-jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/kute.js/1.5.9/kute-easing.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/kute.js/1.5.9/kute-physics.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/kute.js/1.5.9/kute-css.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/kute.js/1.5.9/kute-svg.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/kute.js/1.5.9/kute-text.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/kute.js/1.5.9/kute-attr.min.js"></script>
+    -->
+  </head>
+
+  <body class="list">
+    <%= yield %>
+  </body>
+</html>
+
