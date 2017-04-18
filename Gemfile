@@ -48,3 +48,6 @@ gem 'rspec-rails'
 gem 'factory_girl_rails'
 gem 'therubyracer', platforms: :ruby
 gem 'erb2haml'
+gem 'bootstrap-sass'
+
+gem 'jquery-turbolinks'
