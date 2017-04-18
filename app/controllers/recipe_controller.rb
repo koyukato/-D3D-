@@ -52,13 +52,21 @@ require 'date'
 		# params[:cost] #cost = 2:300    cost = 3:500 
 		# params[:time] # time 1:5分 time 2:10分　time 3:15分　time 4;30
 
-		if t >= 4 && t <= 10 
+		if t >= 4 && t <= 10
+			word = "夕飯"
+			search_mecha(word,params[:cost],params[:time])
 		elsif t > 10 && t <= 14 #昼
+			word = "夕飯"
+			search_mecha(word,params[:cost],params[:time])
 		elsif  t > 14 && t <= 15 #おやつ
+			word = "夕飯"
+			search_mecha(word,params[:cost],params[:time])
 		elsif t > 15 && t <=  23 #夕飯
 			word = "夕飯"
 			search_mecha(word,params[:cost],params[:time])
 		elsif t >= 0 && t < 4 #夕飯
+			word = "夕飯"
+			search_mecha(word,params[:cost],params[:time])
 		end
 	end
   end
