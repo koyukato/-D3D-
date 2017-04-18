@@ -1,4 +1,4 @@
-<h1>だんご三兄弟</h1>
+<h1>だんご三兄弟m</h1>
 
 <h3>レシピ紹介</h3>
 <div>
@@ -6,16 +6,22 @@
 </div>
 
 <br />
+   <% for num in 0..2 do %>
+<%= @menu_title[num] %>
 
+<%= @menu_material[num]%>
+<br><br>
+<% end %>
 <div>
   <table class="recipeList">
     <% for num in 1..20 do %>
     <tr>
-      <td><%= @menu[num] %></td>
+      <td><%= @titles %></td>
     </tr>
     <% end %>
   </table>
 </div>
+
 
 <br />
 
