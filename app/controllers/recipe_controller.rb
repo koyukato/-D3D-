@@ -4,18 +4,21 @@ require 'uri'
 require 'json'
 require 'nokogiri'
 require 'open-uri'
+require 'mechanize'
 
   def index
     @version = '1.0'
     @date = DateTime.now.strftime('%Y-%m-%d %H-%M')
+
   end
 
   # 画面1 - 食べたい料理の条件を決定
   def search
-  end
+  end	
 
   # 画面2 - 検索結果のレシピをリストで公開
   def list
+=begin
 	puts @word=params[:name].to_s
 	url=URI.escape('https://recipe.rakuten.co.jp/search/'+@word+'/')
 	charset=nil
@@ -44,6 +47,10 @@ require 'open-uri'
 			end
 		end
 	end
+=end
+
+	res = Net::HTTP.get(URI.parse('https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20121121?applicationId=1012194014463186177&'))
+	puts @result = JSON.parse(res)
   end
 
   # 画面3 - 選択されたレシピの詳細を表示
