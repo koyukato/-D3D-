@@ -1,10 +1,3 @@
-function hoge() {
-  alert('hoge');
-}
-
-hoge();
-
-/*
 $(function() {
   var tween1 = KUTE.to('#elem-one', {
     borderRadius: '100%', 
@@ -19,4 +12,3 @@ $(function() {
     tween1.start();
   });
 });
-*/
