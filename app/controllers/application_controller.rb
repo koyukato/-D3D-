@@ -46,15 +46,17 @@ class ApplicationController < ActionController::Base
   end
 
   def top_search(resp) #未完成
-	   ranks = Array.new
-	   test = resp.search("div.cateRankTtl")
-	   test.each do |val|
-		   puts val.inner_text
-		   ranks.push(val.inner_text)
+	   next_pages = Array.new
+	   link = Array.new
+	   num = 0
+	   test = resp.search("div.catePopuRank")
+	   test1 = test.search("li")
+	   test2 = test1.search("a")
+	   for num in 0..2 do
+		   link[num] = test2[num][:href]
+		   next_pages[num] = resp.link_with(:href => link[num]).click
+		   puts next_pages[num]
 	   end
-	   first_page = resp.link_with(:text => "#{ranks[0]}").click
-	   second_page = resp.link_with(:text => "#{ranks[1]}").click
-	   third_page = resp.link_with(:text => "#{ranks[2]}").click
   end
 
 end
