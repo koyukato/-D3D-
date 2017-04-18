@@ -45,6 +45,30 @@ class ApplicationController < ActionController::Base
 		end
   end
 
+
+  def top_search(resp) #レシピタイトル,材料
+	   @next_pages = Array.new
+	   @link = Array.new
+	   @menu_title = Array.new					#レシピタイトル
+	   @menu_material = Array.new(3){Array.new}	#材料
+
+	   num=0
+	   recipe_n=0
+	   test = resp.search("div.catePopuRank")
+	   test1 = test.search("li")
+	   @test2 = test1.search("a")
+	   for num in 0..2 do
+		   @link[num] = @test2[num][:href]
+		   @next_pages[num] = resp.link_with(:href => @link[num]).click
+		   @menu_title[num]= @next_pages[num].search("strong")[0].text
+		   @i=0	#材料の数
+		   @next_pages[num].search("//li[@itemprop='ingredients']").each do |node|	
+		   	@menu_material[num][@i] = @next_pages[num].search("a.name")[@i].text	#材料を配列に格納
+		   	@i=@i+1
+		   end
+		
+		end
+
   def top_search(resp) #未完成
 	   next_pages = Array.new
 	   link = Array.new
@@ -57,6 +81,7 @@ class ApplicationController < ActionController::Base
 		   next_pages[num] = resp.link_with(:href => link[num]).click
 		   puts next_pages[num]
 	   end
+
   end
 
 end
