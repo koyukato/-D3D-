@@ -45,6 +45,7 @@ class ApplicationController < ActionController::Base
 		end
   end
 
+
   def top_search(resp) #レシピタイトル,材料
 	   @next_pages = Array.new
 	   @link = Array.new
@@ -67,6 +68,20 @@ class ApplicationController < ActionController::Base
 		   end
 		
 		end
+
+  def top_search(resp) #未完成
+	   next_pages = Array.new
+	   link = Array.new
+	   num = 0
+	   test = resp.search("div.catePopuRank")
+	   test1 = test.search("li")
+	   test2 = test1.search("a")
+	   for num in 0..2 do
+		   link[num] = test2[num][:href]
+		   next_pages[num] = resp.link_with(:href => link[num]).click
+		   puts next_pages[num]
+	   end
+
   end
 
 end
