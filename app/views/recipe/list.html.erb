@@ -1,36 +1,29 @@
-<h1>list</h1>
-<!--APIから取得してたやつの名残-->
-<!--<table border=1>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>categoryUrl</th>
-    <th>parentCategoryId</th>
-  </tr>
-<%# j=0 %>
-  <%# @result['result']['small'].each do |i| %>
-  <%# if i['categoryName']==@name then %>
-  <tr>
-    <td><%# i['categoryId'] %></td>
-    <td><%# i['categoryName'] %></td>
-    <td><a href="<%# i['categoryUrl'] %>"><%# i['categoryUrl'] %></a></td>
-    <td><%# i['parentCategoryId'] %></td>
-  </tr>
-	<%# j=j+1 %>
-  <%# end %>
-  <%# end %>
-</table>
--->
-<!--名残の終わり-->
+<h1>だんご三兄弟</h1>
 
-<%#= @title %> のTOP20品
-<br>
-<table border=1>
+<h3>レシピ紹介</h3>
+<div>
+  <%= @title %> のTOP20品
+</div>
 
-<% for num in 1..100 do %>
-<tr>
-<td><%= @menu_other[num] %></td>
-<td><%= @material[num]%></td>
-</tr>
-<% end %>
-</table>
+<br />
+
+<div>
+  <table class="recipeList">
+    <% for num in 1..20 do %>
+    <tr>
+      <td><%= @menu[num] %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<br />
+
+<div id="elem-one" class="elem one">
+  <span>KUTE</span>
+</div>
+
+<div>
+  <button type="button" id="btn" class="btn">START</button>
+</div>
+
