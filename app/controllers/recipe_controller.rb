@@ -5,6 +5,7 @@ require 'json'
 require 'nokogiri'
 require 'open-uri'
 require 'mechanize'
+require 'date'
 
   def index
     @version = '1.0'
@@ -44,7 +45,48 @@ require 'mechanize'
 		for num in 4..20 do
 			doc.css('//a[rank="'+num.to_s+'"]').each do |node|
 				@menu[num]=node.css('h3').inner_text
+  	if params[:name]  != nil
+		puts @word=params[:name].to_s
+		url=URI.escape('https://recipe.rakuten.co.jp/search/'+@word+'/')
+		charset=nil
+		html=open(url) do |f|
+		charset=f.charset
+		f.read
+		end
+		doc=Nokogiri::HTML.parse(html,charset)
+		#タイトル
+		doc.css('//div[class="cateResultTitBox"]').each do |node|
+			@title=node.css('h2[class="cateResultTit"]').inner_text
+		end
+		#上位20件の取得
+		@menu=Array.new
+		doc.css('//div[data-ratunit="item"]').each do |node|
+			for num in 1..3 do
+				doc.css('//a[rank="'+num.to_s+'"]').each do |node|
+					@menu[num]=node.css('div[class="cateRankTtl"]').inner_text
+				end
+			end			
+		end
+		doc.css('//li[class="clearfix"]').each do |node|
+			for num in 4..20 do
+				doc.css('//a[rank="'+num.to_s+'"]').each do |node|
+					@menu[num]=node.css('h3').inner_text
+				end
 			end
+		end
+	elsif params[:cost] != nil && params[:time] != nil
+		ntime = Time.now
+		t = ntime.hour.to_i
+		# params[:cost] #cost = 2:300    cost = 3:500 
+		# params[:time] # time 1:5分 time 2:10分　time 3:15分　time 4;30
+
+		if t >= 4 && t <= 10 
+		elsif t > 10 && t <= 14 #昼
+		elsif  t > 14 && t <= 15 #おやつ
+		elsif t > 15 && t <=  23 #夕飯
+			word = "夕飯"
+			search_mecha(word,params[:cost],params[:time])
+		elsif t >= 0 && t < 4 #夕飯
 		end
 	end
 =end
