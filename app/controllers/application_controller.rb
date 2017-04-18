@@ -49,11 +49,11 @@ class ApplicationController < ActionController::Base
 	   next_pages = Array.new
 	   link = Array.new
 	   num = 0
-	   test = resp.search("div.catePopuRank")
-	   test1 = test.search("li")
-	   test2 = test1.search("a")
+	   frame = resp.search("div.catePopuRank")
+	   micro_frame = frame.search("li")
+	   substance  =  micro_frame.search("a")
 	   for num in 0..2 do
-		   link[num] = test2[num][:href]
+		   link[num] = substance[num][:href]
 		   next_pages[num] = resp.link_with(:href => link[num]).click
 		   puts next_pages[num]
 	   end
