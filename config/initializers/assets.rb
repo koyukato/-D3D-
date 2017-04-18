@@ -13,3 +13,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( list/kute.js )
 Rails.application.config.assets.precompile += %w( list/kute.min.js )
 Rails.application.config.assets.precompile += %w( list/kute.scss )
+Rails.application.config.assets.precompile += %w( meinstyle/mein.scss )
