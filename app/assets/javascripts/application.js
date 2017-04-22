@@ -1,3 +1,3 @@
 //= require_tree .
-//= require list/kute
-//= require list/kute.min
+//= require list/animation
+//= require list/layout

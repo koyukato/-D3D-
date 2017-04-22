@@ -1,0 +1,107 @@
+$bg_color: #eeeeee;
+$fonts: 'Hiragino Kaku Gothic Std';
+$font_color: #009900;
+$link_color: #990000;
+$link_hover_color: #000099;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: $fonts;
+  background-color: $bg_color;
+  position: relative;
+  color: $font_color;
+  text-align: center;
+  padding: 10px 0;
+  a, a:visited {
+    color: $link_color;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $link_hover_color;
+  }
+}
+
+.recipeList {
+  border: solid 3px #009900;
+  margin-left: auto;
+  margin-right: auto;
+  tr {
+    border: solid 1px #009900;
+    height: 50px;
+    td {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+.dangoMaterialContainer {
+  position: relative;
+  display: inline-block;
+  width: 12%;
+  min-width: 150px;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: auto;
+  background-color: #eeeeee;
+}
+
+.dangoStick {
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+  top: 10px;
+  border-radius: 20px;
+  background-color: #fff68f;
+}
+
+.dangoContainer {
+  position: relative;
+  display: inline;
+  padding: 0;
+  margin: 0, auto;
+}
+
+.dango {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 100%;
+  span {
+    display: block;
+    padding: 45% 10px 10px;
+    color: #ff6666;
+  }
+}
+
+#dango-one {
+  background-color: #ffc0cb;
+  margin-top: 30px;
+}
+
+#dango-two {
+  background-color: #ffffff;
+}
+
+#dango-three {
+  background-color: #008000;
+}
+
+.btn {
+  display: inline-block;
+  margin: 30px 25px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.btn:hover {
+  color: $link_hover_color
+}

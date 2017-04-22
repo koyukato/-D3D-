@@ -10,6 +10,6 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.precompile += %w( list/kute.js )
-Rails.application.config.assets.precompile += %w( list/kute.min.js )
-Rails.application.config.assets.precompile += %w( list/kute.scss )
+Rails.application.config.assets.precompile += %w( list/animation.js )
+Rails.application.config.assets.precompile += %w( list/layout.js )
+Rails.application.config.assets.precompile += %w( list.scss )

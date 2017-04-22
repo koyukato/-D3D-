@@ -1,29 +1,21 @@
-<h1>だんご三兄弟</h1>
+<h1>検索結果</h1>
 
-<h3>レシピ紹介</h3>
-<div>
-  <%= @title %> のTOP20品
-</div>
+<div class="dangoMaterialContainer">
+  <div id="dangoStick" class="dangoStick"></div>
 
-<br />
-
-<div>
-  <table class="recipeList">
-    <% for num in 1..20 do %>
-    <tr>
-      <td><%= @menu[num] %></td>
-    </tr>
-    <% end %>
-  </table>
-</div>
-
-<br />
-
-<div id="elem-one" class="elem one">
-  <span>KUTE</span>
+  <div class="dangoContainer">
+    <div id="dango-one" class="dango one">
+      <span>料理１</span>
+    </div>
+    <div id="dango-two" class="dango two">
+      <span>料理２</span>
+    </div>
+    <div id="dango-three" class="dango three">
+      <span>料理３</span>
+    </div>
+  </div>
 </div>
 
 <div>
-  <button type="button" id="btn" class="btn">START</button>
+  <button type="button" id="btn" class="btn">Go Animation!</button>
 </div>
-
